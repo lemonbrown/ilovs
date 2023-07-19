@@ -1,9 +1,23 @@
 #!/usr/bin/env node
 import { asCsv } from "./lib/asCsv";
 import * as fs from "fs";
+import { send } from "./lib/messageBus"
+import cron from "node-cron"
 
-export function save(data: any, type: string, outputFile: string){
+export async function schedule(cronSchedule: string, scrape?: Function, name?: string){
 
+    if(name){
+
+        
+    }
+    
+    if(scrape){
+
+        cron.schedule(cronSchedule, async () => await scrape());
+    }
+}
+
+export function save(data: any, type: string, outputFile: string, callback?: Function){
 
     let stringData = "";
 
@@ -19,6 +33,11 @@ export function save(data: any, type: string, outputFile: string){
     
     if(outputFile){
 
-        fs.writeFileSync(outputFile, stringData);
+        //fs.writeFileSync(outputFile, stringData);
+    }
+
+    if(callback){
+
+        send(stringData, callback);
     }
 }

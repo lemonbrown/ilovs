@@ -14,8 +14,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@types/node-cron": "^3.0.8",
     "esbuild": "^0.18.14",
-    "fs": "^0.0.1-security",
+    "fastq": "^1.15.0",
+    "node-cron": "^3.0.2",
     "tsc-node": "^0.0.3",
     "typescript": "^5.1.6"
   },
